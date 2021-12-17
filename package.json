@@ -1,0 +1,22 @@
+{
+  "name": "rundashboard",
+  "version": "1.0.0",
+  "description": "This application is a personal project to assist me in maintaining my running data. I intend on expanding it to include a coach's dashboard allowing a coach the ability to see the progress of his/her athletes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanhagstrom/runDashboard.git"
+  },
+  "author": "Sean Hagstrom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seanhagstrom/runDashboard/issues"
+  },
+  "homepage": "https://github.com/seanhagstrom/runDashboard#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
