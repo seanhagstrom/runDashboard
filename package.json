@@ -1,11 +1,12 @@
 {
-  "name": "rundashboard",
+  "name": "runDashboard",
   "version": "1.0.0",
   "description": "This application is a personal project to assist me in maintaining my running data. I intend on expanding it to include a coach's dashboard allowing a coach the ability to see the progress of his/her athletes.",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
+    "seed": "node script/seed.js",
     "start": "node server",
     "start:dev": "npm run build:dev & npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
