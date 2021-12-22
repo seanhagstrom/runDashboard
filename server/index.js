@@ -1,20 +1,22 @@
 const { db } = require("./db");
-const express = require("express");
-const morgan = require("morgan");
-const app = express();
-const path = require("path");
+const app = require("./app");
+const seed = require("../script/seed");
 const Port = process.env.PORT || 8080;
 
-app.use(morgan("dev"));
+const init = async () => {
+  try {
+    if (process.env.SEED === "true") {
+      await seed();
+    } else {
+      await db.sync();
+    }
 
-app.use(express.json());
+    app.listen(Port, () => {
+      console.log(`runDashboard server is running on port ${Port}!`);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public/index.html"));
-});
-
-app.use(express.static(path.join(__dirname, "..", "public")));
-
-app.listen(Port, () => {
-  console.log(`runDashboard server is running on port ${Port}!`);
-});
+init();

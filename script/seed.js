@@ -40,3 +40,5 @@ async function runSeed() {
 if (module === require.main) {
   runSeed();
 }
+
+module.exports = seed;
