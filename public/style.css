@@ -9,9 +9,9 @@ body {
 
 header {
   display: flex;
-  /* position: fixed;
-  Using position fixed will keep the navbar visible the entire time
-  */
+  position: fixed;
+  /* Using position fixed will keep the navbar visible the entire time */
+
   justify-content: space-between;
   background-color: rgba(70, 125, 228, 0.918);
   margin: 0 4em;
@@ -19,9 +19,9 @@ header {
   width: calc(100vw - 8em);
   color: #fff;
   border-radius: 0 0 1em 1em;
-  /* z-index: 2;
-  Using the z-index will keep the navbar on the top of all content
-  */
+  z-index: 2;
+  /* Using the z-index will keep the navbar on the top of all content */
+
   opacity: 100;
 }
 
@@ -51,4 +51,29 @@ nav {
   color: #202b47;
   background-color: #fff;
   box-shadow: #d3d3d3;
+}
+
+.flex {
+  display: flex;
+}
+
+@media screen and (max-width: 600px) {
+  .flex {
+    flex-flow: column wrap;
+    align-items: center;
+    padding: 0 15px;
+  }
+}
+
+section {
+  box-sizing: border-box;
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+section h1 {
+  text-align: center;
+  position: relative;
+  margin: 100px 0;
 }
