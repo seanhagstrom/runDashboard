@@ -1,0 +1,12 @@
+/*** For a PWA you'll need to include some basic
+  fields here. At a minimum you'll need {name,
+  short_name, icons[{src, type, sizes, purpose
+  (optional)}], start_url, display(usually
+  'standalone'), id(newly added)}.
+  Helpful references:
+
+  https://web.dev/learn/pwa/web-app-manifest/
+
+  https://developer.mozilla.org/en-US/docs/Web/Manifest
+***/
+
