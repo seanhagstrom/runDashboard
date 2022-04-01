@@ -13,7 +13,7 @@ header {
   /* Using position fixed will keep the navbar visible the entire time */
 
   justify-content: space-between;
-  background-color: rgba(70, 125, 228, 0.918);
+  background-color: #467de4ea;
   margin: 0 4em;
   padding: 10px;
   width: calc(100vw - 8em);

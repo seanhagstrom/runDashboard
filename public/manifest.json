@@ -1,12 +1,14 @@
-/*** For a PWA you'll need to include some basic
-  fields here. At a minimum you'll need {name,
-  short_name, icons[{src, type, sizes, purpose
-  (optional)}], start_url, display(usually
-  'standalone'), id(newly added)}.
-  Helpful references:
-
-  https://web.dev/learn/pwa/web-app-manifest/
-
-  https://developer.mozilla.org/en-US/docs/Web/Manifest
-***/
-
+{
+  "name": "Run Coaching Dashboard",
+  "short_name": "Run Coach",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#467de4ea",
+  "description": "An application for coaches and athletes to visualize their daily performance.",
+  "icons": [
+    { "src": "/logo192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/logo512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "orientation": "portrait"
+}
