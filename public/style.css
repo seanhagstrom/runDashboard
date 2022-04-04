@@ -58,10 +58,17 @@ nav {
 }
 
 @media screen and (max-width: 600px) {
-  .flex {
+  /* .flex {
     flex-flow: column wrap;
     align-items: center;
     padding: 0 15px;
+  } */
+  img {
+    width: 100vw;
+  }
+
+  .auth {
+    height: 100vh;
   }
 }
 
