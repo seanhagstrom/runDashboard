@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/seanhagstrom/runDashboard#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.17.8",
     "express": "^4.17.2",
     "morgan": "^1.10.0",
     "pg": "^8.7.1",
@@ -36,6 +38,7 @@
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.5",
     "babel-loader": "^8.2.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "nodemon": "^2.0.15",
     "webpack": "^5.65.0",
     "webpack-cli": "^4.9.1"
