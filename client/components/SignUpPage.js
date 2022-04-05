@@ -7,22 +7,23 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Images } from './Images';
 
-export const LogInPage = () => {
+export const SignUpPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+  const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
 
   const navigate = useNavigate();
 
-  const handleLogIn = async () => {
-    alert('login not implemented yet');
+  const handleSignUp = async () => {
+    alert('sign up not implemented yet');
   };
 
   return (
     <section>
       <Images />
       <div className='flex'>
-        <h1>Log IN</h1>
+        <h1>Sign Up</h1>
         {errorMessage && <div className='fail'>{errorMessage}</div>}
         <input
           value={emailValue}
@@ -35,10 +36,24 @@ export const LogInPage = () => {
           type='password'
           placeholder='password'
         />
-        <button disabled={!emailValue || !passwordValue} onClick={handleLogIn}>
-          Log In
+        <input
+          value={confirmPasswordValue}
+          onChange={(e) => setConfirmPasswordValue(e.target.value)}
+          type='password'
+          placeholder='confirm password'
+        />
+        <hr />
+        <button
+          disabled={
+            !emailValue ||
+            !passwordValue ||
+            passwordValue !== confirmPasswordValue
+          }
+          onClick={handleSignUp}
+        >
+          Sign Up
         </button>
-        <Link to='/forgot-password'>Forgot Password</Link>
+        <Link to='/login'>Already have an account? Log In</Link>
       </div>
     </section>
   );
