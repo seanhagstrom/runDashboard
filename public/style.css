@@ -65,7 +65,8 @@ nav {
     padding: 0 15px;
   }
   img {
-    width: 100vw;
+    /* width: 100vw; */
+    height: 40vh;
   }
 
   .auth {
