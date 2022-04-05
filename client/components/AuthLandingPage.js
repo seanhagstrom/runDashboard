@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Images } from './Images';
 
 export const AuthLandingPage = () => {
+  const navigate = useNavigate();
   return (
     <div className='auth'>
       <div>
@@ -11,9 +13,9 @@ export const AuthLandingPage = () => {
       </div>
       <div>
         <p>Already have an accout?</p>
-        <button>Log In</button>
+        <button onClick={() => navigate('/login')}>Log In</button>
         <p>New to Run Coach? Sign Up.</p>
-        <button>Sign up</button>
+        <button onClick={() => navigate('/signup')}>Sign up</button>
       </div>
     </div>
   );
