@@ -22,9 +22,8 @@ User.prototype.generateToken = function () {
   return jwt.sign({ id: this.id }, process.env.JWT);
 };
 
-User.prototype.authenticate = async function (passwordToVerify) {
-  console.log(passwordToVerify);
-  console.log(await bcrypt.compare(passwordToVerify, this.password));
+User.prototype.checkPassword = function (passwordToVerify) {
+  return bcrypt.compare(passwordToVerify, this.password);
 };
 
 const hashPassword = async (user) => {
