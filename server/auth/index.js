@@ -7,6 +7,7 @@ router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
+    const verify = await user.authenticate(password);
     res.send(user);
   } catch (error) {
     if (error.name === 'SequelizeUniqueConstraintError') {

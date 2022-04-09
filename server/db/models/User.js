@@ -19,8 +19,12 @@ const User = db.define('user', {
 
 // User prototype to generate token
 User.prototype.generateToken = function () {
-  console.log('this is my JWT', process.env.JWT);
   return jwt.sign({ id: this.id }, process.env.JWT);
+};
+
+User.prototype.authenticate = async function (passwordToVerify) {
+  console.log(passwordToVerify);
+  console.log(await bcrypt.compare(passwordToVerify, this.password));
 };
 
 const hashPassword = async (user) => {
