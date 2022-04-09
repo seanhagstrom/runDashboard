@@ -7,8 +7,7 @@ router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email } });
-    const verify = await user.checkPassword(password);
-    if (!user || !verify) {
+    if (!user || !(await user.checkPassword(password))) {
       const error = Error('Incorrect email/password!');
       error.status = 401;
       throw error;
