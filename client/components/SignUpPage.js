@@ -6,8 +6,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Images } from './Images';
+import { useToken } from '../utils/useToken';
+import axios from 'axios';
 
 export const SignUpPage = () => {
+  const [token, setToken] = useToken();
   const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
@@ -16,7 +19,13 @@ export const SignUpPage = () => {
   const navigate = useNavigate();
 
   const handleSignUp = async () => {
-    alert('sign up not implemented yet');
+    const response = await axios.post('/auth/signup', {
+      email: emailValue,
+      password: passwordValue,
+    });
+    const { token } = response.data;
+    setToken(token);
+    navigate('/home');
   };
 
   return (

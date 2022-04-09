@@ -21,6 +21,7 @@ const User = db.define('user', {
 User.prototype.generateToken = function () {
   return jwt.sign({ id: this.id }, process.env.JWT);
 };
+// bcrypt docs: https://www.npmjs.com/package/bcrypt
 
 User.prototype.checkPassword = function (passwordToVerify) {
   return bcrypt.compare(passwordToVerify, this.password);
