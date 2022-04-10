@@ -5,9 +5,12 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { Images } from './Images';
+import { useToken } from '../utils/useToken';
 
-export const LogInPage = () => {
+export const LogInPage = (props) => {
+  const [token, setToken] = useToken();
   const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
@@ -15,7 +18,13 @@ export const LogInPage = () => {
   const navigate = useNavigate();
 
   const handleLogIn = async () => {
-    alert('login not implemented yet');
+    const response = await axios.post('/auth/login', {
+      email: emailValue,
+      password: passwordValue,
+    });
+    const { token } = response.data;
+    setToken(token);
+    navigate('/dashboard');
   };
 
   return (

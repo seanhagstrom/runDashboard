@@ -5,9 +5,9 @@
 /* eslint-disable react/function-component-definition */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { Images } from './Images';
 import { useToken } from '../utils/useToken';
-import axios from 'axios';
 
 export const SignUpPage = () => {
   const [token, setToken] = useToken();
@@ -25,7 +25,7 @@ export const SignUpPage = () => {
     });
     const { token } = response.data;
     setToken(token);
-    navigate('/home');
+    navigate('/dashboard');
   };
 
   return (

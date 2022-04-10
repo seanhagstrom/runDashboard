@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 // custom hook to set new tokens and get existing token from local storage.
 export const useToken = () => {
-  console.log('in useToken');
   const [token, setLocalToken] = useState(() => {
     return localStorage.getItem('token');
   });

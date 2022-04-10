@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Home = () => {
+export const Dashboard = () => {
   return <h1>You're logged in!</h1>;
 };
