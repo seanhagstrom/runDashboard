@@ -1,20 +1,20 @@
-"use strict";
+// 'use strict';
 
 const {
   db,
   models: { User },
-} = require("../server/db");
+} = require('../server/db');
 
 async function seed() {
   await db.sync({ force: true });
-  console.log("db synced!");
+  console.log('db synced!');
 
   const users = await Promise.all([
-    User.create({ username: "Sean", password: "123" }),
+    User.create({ email: 'sean@sean.com', password: '123' }),
   ]);
 
   console.log(`seeded ${users.length} users`);
-  console.log("seeded successfully");
+  console.log('seeded successfully');
 
   return {
     users: {
@@ -24,16 +24,16 @@ async function seed() {
 }
 
 async function runSeed() {
-  console.log("seeding...");
+  console.log('seeding...');
   try {
     await seed();
   } catch (error) {
     console.error(error);
     process.exitCode = 1;
   } finally {
-    console.log("closing db connection");
+    console.log('closing db connection');
     await db.close();
-    console.log("db connection closed");
+    console.log('db connection closed');
   }
 }
 

@@ -9,17 +9,18 @@ body {
 
 header {
   display: flex;
-  position: fixed;
+  /* position: fixed; */
   /* Using position fixed will keep the navbar visible the entire time */
 
   justify-content: space-between;
   background-color: rgba(70, 125, 228, 0.918);
-  margin: 0 4em;
+  /* margin: 0 4em; */
   padding: 10px;
-  width: calc(100vw - 8em);
+  width: 100vw;
+  /* width: calc(100vw - 8em); */
   color: #fff;
-  border-radius: 0 0 1em 1em;
-  z-index: 2;
+  /* border-radius: 0 0 1em 1em; */
+  /* z-index: 2; */
   /* Using the z-index will keep the navbar on the top of all content */
 
   opacity: 100;
@@ -63,6 +64,16 @@ nav {
     align-items: center;
     padding: 0 15px;
   }
+  hr {
+    width: 80vw;
+  }
+  img {
+    height: 45vh;
+  }
+
+  .auth {
+    height: 100vh;
+  }
 }
 
 section {
@@ -75,5 +86,4 @@ section {
 section h1 {
   text-align: center;
   position: relative;
-  margin: 100px 0;
 }

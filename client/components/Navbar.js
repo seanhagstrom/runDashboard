@@ -1,21 +1,15 @@
-import React from "react";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { IoArrowUndoSharp } from 'react-icons/io5';
+// https://react-icons.github.io/react-icons
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <header>
-      <p>Navbar Logo Here</p>
       <nav>
         <div className='nav-item'>
-          <a href='#'>Home</a>
-        </div>
-        <div className='nav-item'>
-          <a href='#'>About</a>
-        </div>
-        <div className='nav-item'>
-          <a href='#'>Login</a>
-        </div>
-        <div className='nav-item'>
-          <a href='#'>Sign Up</a>
+          <IoArrowUndoSharp onClick={() => navigate(-1)} />
         </div>
       </nav>
     </header>
