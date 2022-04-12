@@ -4,10 +4,11 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable react/function-component-definition */
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { Images } from './Images';
 import { useToken } from '../utils/useToken';
+import { useUser } from '../utils/useUser';
 
 export const LogInPage = (props) => {
   const [token, setToken] = useToken();
@@ -16,6 +17,7 @@ export const LogInPage = (props) => {
   const [passwordValue, setPasswordValue] = useState('');
 
   const navigate = useNavigate();
+  const user = useUser();
 
   const handleLogIn = async () => {
     const response = await axios.post('/auth/login', {
@@ -23,8 +25,8 @@ export const LogInPage = (props) => {
       password: passwordValue,
     });
     const { token } = response.data;
-    setToken(token);
-    navigate('/dashboard');
+    await setToken(token);
+    navigate('/dashboard', { replace: true });
   };
 
   return (
@@ -33,6 +35,7 @@ export const LogInPage = (props) => {
       <div className='flex'>
         <h1>Log IN</h1>
         {errorMessage && <div className='fail'>{errorMessage}</div>}
+        {/* {user && <Navigate to='/dashboard' replace={true} />} */}
         <input
           value={emailValue}
           onChange={(e) => setEmailValue(e.target.value)}
