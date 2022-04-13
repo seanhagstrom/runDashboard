@@ -45,6 +45,21 @@ export const login =
     }
   };
 
+export const signup =
+  ({ email, password }) =>
+  async (dispatch) => {
+    try {
+      const { data } = await axios.post('/auth/signup', {
+        email,
+        password,
+      });
+      window.localStorage.setItem(TOKEN, data.token);
+      dispatch(me());
+    } catch (authError) {
+      return dispatch(setAuth({ error: authError }));
+    }
+  };
+
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:

@@ -20,7 +20,6 @@ const RouteConfig = () => {
     dispatch(me());
   }, []);
 
-  console.log('This is my user: ', loggedInUser);
   return (
     <div>
       {loggedInUser ? (
@@ -28,6 +27,10 @@ const RouteConfig = () => {
           <Routes>
             <Route
               path='/login'
+              element={<Navigate replace to='/dashboard' />}
+            />
+            <Route
+              path='/signup'
               element={<Navigate replace to='/dashboard' />}
             />
 

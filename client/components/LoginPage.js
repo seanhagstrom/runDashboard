@@ -10,12 +10,10 @@ import { Images } from './Images';
 import { login } from '../store/auth';
 
 export const LogInPage = () => {
-  const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.id);
   const { error } = useSelector((state) => state.auth);
 
   const handleLogIn = async () => {

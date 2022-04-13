@@ -4,28 +4,26 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable react/function-component-definition */
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { signup } from '../store/auth';
 import { Images } from './Images';
-import { useToken } from '../utils/useToken';
 
 export const SignUpPage = () => {
-  const [token, setToken] = useToken();
-  const [errorMessage, setErrorMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
 
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { error } = useSelector((state) => state.auth);
 
   const handleSignUp = async () => {
-    const response = await axios.post('/auth/signup', {
-      email: emailValue,
-      password: passwordValue,
-    });
-    const { token } = response.data;
-    setToken(token);
-    navigate('/dashboard');
+    dispatch(
+      signup({
+        email: emailValue,
+        password: passwordValue,
+      })
+    );
   };
 
   return (
@@ -33,7 +31,9 @@ export const SignUpPage = () => {
       <Images />
       <div className='flex'>
         <h1>Sign Up</h1>
-        {errorMessage && <div className='fail'>{errorMessage}</div>}
+        {error && error.response && (
+          <div className='fail'>{error.response.data}</div>
+        )}
         <input
           value={emailValue}
           onChange={(e) => setEmailValue(e.target.value)}
