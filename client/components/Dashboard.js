@@ -1,18 +1,14 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { useUser } from '../utils/useUser';
+import React, { useEffect } from 'react';
 
-const loggedInUser = {
-  name: 'Sean',
-};
+import { useSelector } from 'react-redux';
 
 export const Dashboard = () => {
-  const user = useUser();
-  console.log(user);
+  const coach = useSelector((state) => state.auth);
+  console.log(coach);
+
   return (
     <div>
-      {!user && <Navigate to='/' replace={true} />}
-      <h1>Welcome Coach {loggedInUser.name}</h1>
+      <h1>Welcome Coach {coach.email}</h1>
     </div>
   );
 };
