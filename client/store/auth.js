@@ -60,6 +60,15 @@ export const signup =
     }
   };
 
+export const logout = () => (dispatch) => {
+  try {
+    window.localStorage.removeItem(TOKEN);
+    dispatch(setAuth({}));
+  } catch (authError) {
+    return dispatch(setAuth({ error: authError }));
+  }
+};
+
 export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
