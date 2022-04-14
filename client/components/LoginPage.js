@@ -4,29 +4,25 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable react/function-component-definition */
 import React, { useState } from 'react';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Images } from './Images';
-import { useToken } from '../utils/useToken';
-import { useUser } from '../utils/useUser';
+import { login } from '../store/auth';
 
-export const LogInPage = (props) => {
-  const [token, setToken] = useToken();
-  const [errorMessage, setErrorMessage] = useState('');
+export const LogInPage = () => {
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
 
-  const navigate = useNavigate();
-  const user = useUser();
+  const dispatch = useDispatch();
+  const { error } = useSelector((state) => state.auth);
 
   const handleLogIn = async () => {
-    const response = await axios.post('/auth/login', {
-      email: emailValue,
-      password: passwordValue,
-    });
-    const { token } = response.data;
-    await setToken(token);
-    navigate('/dashboard', { replace: true });
+    dispatch(
+      login({
+        email: emailValue,
+        password: passwordValue,
+      })
+    );
   };
 
   return (
@@ -34,8 +30,9 @@ export const LogInPage = (props) => {
       <Images />
       <div className='flex'>
         <h1>Log IN</h1>
-        {errorMessage && <div className='fail'>{errorMessage}</div>}
-        {/* {user && <Navigate to='/dashboard' replace={true} />} */}
+        {error && error.response && (
+          <div className='fail'>{error.response.data}</div>
+        )}
         <input
           value={emailValue}
           onChange={(e) => setEmailValue(e.target.value)}

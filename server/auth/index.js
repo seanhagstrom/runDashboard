@@ -3,6 +3,16 @@ const {
   models: { User },
 } = require('../db');
 
+router.get('/me', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    const { id, email } = user;
+    res.send({ id, email });
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
