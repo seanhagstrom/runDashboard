@@ -6,7 +6,6 @@ const Team = db.define('team', {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false,
-    validate: { isEmail: true },
   },
   imageURL: {
     type: DataTypes.TEXT,
