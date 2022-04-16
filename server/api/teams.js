@@ -5,7 +5,14 @@ const {
 
 router.get('/', async (req, res, next) => {
   try {
-    const teams = await Team.findAll({ include: User });
+    const coachId = 1;
+    const teams = await Team.findAll({
+      include: {
+        model: User,
+        where: { id: coachId },
+        attributes: ['id', 'firstName', 'lastName'],
+      },
+    });
     res.send(teams);
   } catch (error) {
     next(error);
