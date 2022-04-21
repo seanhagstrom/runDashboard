@@ -5,12 +5,15 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
+import { Teams } from './Teams';
+
 export const Dashboard = () => {
   const coach = useSelector((state) => state.auth);
 
   return (
     <div>
       <h1>Welcome Coach {coach.email}</h1>
+      <Teams />
     </div>
   );
 };

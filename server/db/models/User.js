@@ -6,6 +6,12 @@ const db = require('../db');
 const SALT_ROUNDS = 10;
 
 const User = db.define('user', {
+  firstName: {
+    type: DataTypes.STRING,
+  },
+  lastName: {
+    type: DataTypes.STRING,
+  },
   email: {
     type: DataTypes.STRING,
     unique: true,
