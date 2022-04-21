@@ -12,6 +12,7 @@ export const Images = () => {
       <img
         src='https://images.pexels.com/photos/878151/pexels-photo-878151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
         alt='Woman running down a foggy tree lined path'
+        className='auth-images'
       />
     </div>
   );

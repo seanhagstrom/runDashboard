@@ -67,7 +67,7 @@ nav {
   hr {
     width: 80vw;
   }
-  img {
+  .auth-images {
     height: 45vh;
   }
 
@@ -86,4 +86,19 @@ section {
 section h1 {
   text-align: center;
   position: relative;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2px;
+  border: 2px solid #202b47;
+}
+.card img {
+  width: 45vw;
+}
+
+.card-item {
+  margin: 1px;
 }
