@@ -1,19 +1,20 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
-import thunkMiddleware from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import { configureStore } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
 import auth from './auth';
 import teams from './teams';
 
-const reducer = combineReducers({
-  auth,
-  teams,
+const store = configureStore({
+  reducer: {
+    auth,
+    teams,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
-
-const middleware = composeWithDevTools(
-  applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
-);
-const store = createStore(reducer, middleware);
 
 export default store;
 export * from './auth';
+
+/***Redux-Toolkit documentation:
+ * Store refactor: https://redux.js.org/tutorials/fundamentals/part-8-modern-redux
+ * Middleware reference: https://redux-toolkit.js.org/api/getDefaultMiddleware
+ */
