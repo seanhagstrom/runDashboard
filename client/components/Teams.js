@@ -21,7 +21,11 @@ export const Teams = () => {
       )}
       {teams &&
         teams.map((team) => (
-          <div key={team.id} className='card'>
+          <div
+            key={team.id}
+            className='card'
+            onClick={() => alert('you clicked me!')}
+          >
             <p className='card-item'>{team.name}</p>
             <img className='card-item' src={team.imageURL} alt='Team Logo' />
           </div>
